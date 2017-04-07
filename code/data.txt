@@ -1,0 +1,19 @@
+select 
+ops.rowid_org as ORG_ID, 
+org.mdcp_dlt_ind as ORG_Active,
+org.org_out_of_bsn_ind as ORG_OOB,
+org.xtrn_ind as ORG_External,
+org.rowid_rplm_org as ORG_RPLM_ID,
+org.ORG_NN_STD_QLTY_MSR_CD as ORG_MSR_CD,
+org.MDCP_OBJ_MNT_TS as ORG_MNT_TS,
+ops.rowid_object as OPS_ID, 
+ops.mdcp_dlt_ind as OPS_Active, 
+ops.org_out_of_bsn_ind as OPS_OOB, 
+ops.xtrn_ind as OPS_External, 
+ops.rowid_rplm_otr_prty_site as OPS_RPLM_ID,
+ops.MDCP_OBJ_MNT_TS as OPS_MNT_TS
+from cmx_ors.c_otr_prty_site ops 
+left join cmx_ors.c_org org on org.rowid_object = ops.rowid_org
+where org.rowid_object ='157249445'    
+and org.xtrn_ind = 'N'
+and org.ORG_NN_STD_QLTY_MSR_CD is null
